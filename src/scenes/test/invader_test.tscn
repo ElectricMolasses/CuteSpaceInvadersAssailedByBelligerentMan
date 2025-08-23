@@ -6,7 +6,10 @@
 [node name="InvaderTest" type="Node2D"]
 
 [node name="Invader" parent="." instance=ExtResource("1_tcoqy")]
-position = Vector2(53, 54)
+position = Vector2(36, 24)
+strafe_width = 180.0
+strafe_speed = 30.0
+strafe_box = Rect2(0, 0, 180, 60)
 
 [node name="InvaderDebugVisualizer" parent="." node_paths=PackedStringArray("target_node") instance=ExtResource("2_wp5ot")]
 target_node = NodePath("../Invader")

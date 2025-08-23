@@ -10,10 +10,12 @@
 script = ExtResource("1_qk5c4")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(30, 30)
 scale = Vector2(60, 60)
 texture = SubResource("CanvasTexture_2qjh8")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(30, 30)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2(3, 3)

@@ -27,4 +27,5 @@ func _draw():
 	var strafe_box: Rect2 = target_node.strafe_box
 	strafe_box.position += target_node.position
 
+
 	draw_rect(strafe_box, strafe_box_fill, true)
