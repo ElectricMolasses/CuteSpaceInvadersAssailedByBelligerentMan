@@ -1,13 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bawhx7rwcx5cj"]
+[gd_scene load_steps=4 format=3 uid="uid://bawhx7rwcx5cj"]
 
+[ext_resource type="Script" uid="uid://81avqhulqfn8" path="res://src/scenes/test/invader_test.gd" id="1_8ixh4"]
 [ext_resource type="PackedScene" uid="uid://ed21rpoloa1k" path="res://src/entities/invaders/invader/invader.tscn" id="1_tcoqy"]
 [ext_resource type="PackedScene" uid="uid://dqu27l5g3crw7" path="res://src/scenes/test/invaders/invader_debug_visualizer.tscn" id="2_wp5ot"]
 
 [node name="InvaderTest" type="Node2D"]
+script = ExtResource("1_8ixh4")
 
 [node name="Invader" parent="." instance=ExtResource("1_tcoqy")]
 position = Vector2(36, 24)
-strafe_width = 180.0
 strafe_speed = 30.0
 strafe_box = Rect2(0, 0, 180, 60)
 
