@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bawhx7rwcx5cj"]
+
+[ext_resource type="PackedScene" uid="uid://ed21rpoloa1k" path="res://src/entities/invaders/invader/invader.tscn" id="1_tcoqy"]
+[ext_resource type="PackedScene" uid="uid://dqu27l5g3crw7" path="res://src/scenes/test/invaders/invader_debug_visualizer.tscn" id="2_wp5ot"]
+
+[node name="InvaderTest" type="Node2D"]
+
+[node name="Invader" parent="." instance=ExtResource("1_tcoqy")]
+position = Vector2(53, 54)
+
+[node name="InvaderDebugVisualizer" parent="." node_paths=PackedStringArray("target_node") instance=ExtResource("2_wp5ot")]
+target_node = NodePath("../Invader")

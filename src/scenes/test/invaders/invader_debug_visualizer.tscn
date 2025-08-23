@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqu27l5g3crw7"]
+
+[ext_resource type="Script" uid="uid://cx6gxs30h52v4" path="res://src/scenes/test/invaders/invader_debug_visualizer.gd" id="1_b32yn"]
+
+[node name="InvaderDebugVisualizer" type="Node2D"]
+script = ExtResource("1_b32yn")

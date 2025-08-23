@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ed21rpoloa1k"]
+
+[ext_resource type="Script" uid="uid://r232l55mo8v4" path="res://src/entities/invaders/invader/invader.gd" id="1_qk5c4"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_2qjh8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qk5c4"]
+
+[node name="Invader" type="Node2D"]
+script = ExtResource("1_qk5c4")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(60, 60)
+texture = SubResource("CanvasTexture_2qjh8")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_qk5c4")
