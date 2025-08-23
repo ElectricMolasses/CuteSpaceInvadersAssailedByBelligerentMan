@@ -1,7 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbpntw5kpp4oa"]
+[gd_scene load_steps=3 format=3 uid="uid://bbpntw5kpp4oa"]
 
 [ext_resource type="PackedScene" uid="uid://y5218lan7bi1" path="res://src/entities/invaders/invaders_manager/invaders_manager.tscn" id="1_h2aeh"]
+[ext_resource type="PackedScene" uid="uid://ed21rpoloa1k" path="res://src/entities/invaders/invader/invader.tscn" id="2_kfkxl"]
 
 [node name="InvadersTest" type="Node2D"]
 
 [node name="InvadersManager" parent="." instance=ExtResource("1_h2aeh")]
+position = Vector2(42, 33)
+columns = 4
+rows = 3
+invader_scene = ExtResource("2_kfkxl")
