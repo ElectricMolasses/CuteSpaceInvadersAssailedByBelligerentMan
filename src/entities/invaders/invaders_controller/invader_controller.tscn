@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cy6hdyaq47fhj"]
+
+[ext_resource type="Script" uid="uid://51w0geut5krj" path="res://src/entities/invaders/invaders_controller/invader_controller.gd" id="1_gxjk4"]
+
+[node name="InvaderController" type="Node2D"]
+script = ExtResource("1_gxjk4")

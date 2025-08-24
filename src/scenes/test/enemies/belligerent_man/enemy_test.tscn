@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmqmqnkh6veea"]
+
+[ext_resource type="Script" uid="uid://cksxigk4va8no" path="res://src/scenes/test/enemies/belligerent_man/enemy_test.gd" id="1_n5lfg"]
+[ext_resource type="PackedScene" uid="uid://c0a286k6e0j88" path="res://src/entities/belligerent_man/enemy.tscn" id="1_v3kyy"]
+[ext_resource type="PackedScene" uid="uid://k6ci0gxep84e" path="res://src/ai/enemy/enemy_controller.tscn" id="2_pqa6t"]
+[ext_resource type="Script" uid="uid://ce06axrkk76f7" path="res://src/ai/enemy/enemy_controller.gd" id="3_1vvlr"]
+
+[node name="EnemyTest" type="Node2D" node_paths=PackedStringArray("test_target_enemy")]
+script = ExtResource("1_n5lfg")
+test_target_enemy = NodePath("EnemyController")
+
+[node name="Enemy" parent="." instance=ExtResource("1_v3kyy")]
+position = Vector2(314, 1082)
+
+[node name="EnemyController" parent="." node_paths=PackedStringArray("puppet") instance=ExtResource("2_pqa6t")]
+script = ExtResource("3_1vvlr")
+puppet = NodePath("../Enemy")

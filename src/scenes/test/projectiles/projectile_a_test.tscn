@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://umg72kj60cyx"]
+
+[ext_resource type="Script" uid="uid://cdv5eiqu43cat" path="res://src/scenes/test/projectiles/projectile_a_test.gd" id="1_26nky"]
+[ext_resource type="PackedScene" uid="uid://xc510j817jtx" path="res://src/entities/projectiles/projectile_a/projectile_a.tscn" id="1_88rb2"]
+
+[node name="ProjectileATest" type="Node2D" node_paths=PackedStringArray("test_target_projectile")]
+script = ExtResource("1_26nky")
+test_target_projectile = NodePath("ProjectileA")
+
+[node name="ProjectileA" parent="." instance=ExtResource("1_88rb2")]
+position = Vector2(319, 1090)

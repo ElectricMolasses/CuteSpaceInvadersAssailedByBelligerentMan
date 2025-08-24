@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://23wgm0qbqpg0"]
+
+[ext_resource type="Shader" uid="uid://c2185hyfilxkb" path="res://src/shaders/projectile.gdshader" id="1_m4fhd"]
+
+[resource]
+shader = ExtResource("1_m4fhd")
+shader_parameter/core_color = Color(0.611511, 0.081637, 0.203703, 0.847059)
+shader_parameter/glow_color = Color(0.929412, 0.639216, 0.290196, 0.270588)
+shader_parameter/core_radius = 0.2
+shader_parameter/glow_radius = 0.48
+shader_parameter/tail_len = 1.6
+shader_parameter/pulse_amp = 0.08
+shader_parameter/noise_freq = 1024.0
+shader_parameter/head_taper_factor = 0.25
+shader_parameter/head_taper_start = 0.8
+shader_parameter/bottom_fade_len = 0.2

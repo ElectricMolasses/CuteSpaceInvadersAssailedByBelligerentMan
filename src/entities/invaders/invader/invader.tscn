@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ed21rpoloa1k"]
+[gd_scene load_steps=6 format=3 uid="uid://ed21rpoloa1k"]
 
 [ext_resource type="Script" uid="uid://r232l55mo8v4" path="res://src/entities/invaders/invader/invader.gd" id="1_qk5c4"]
+[ext_resource type="PackedScene" uid="uid://bpnw1lobw4hy3" path="res://src/entities/projectiles/spawner/projectile_spawner.tscn" id="2_qlxgp"]
+[ext_resource type="PackedScene" uid="uid://xc510j817jtx" path="res://src/entities/projectiles/projectile_a/projectile_a.tscn" id="3_att1v"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_2qjh8"]
 
@@ -20,3 +22,7 @@ position = Vector2(30, 30)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_qk5c4")
+
+[node name="ProjectileSpawner" parent="." instance=ExtResource("2_qlxgp")]
+position = Vector2(30, 60)
+projectile = ExtResource("3_att1v")

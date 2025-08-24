@@ -60,9 +60,6 @@ func _ready() -> void:
 		Position.RIGHT:
 			position.x += strafe_box.size.x - self.visual_width
 
-func _process(delta: float) -> void:
-	pass
-
 func _physics_process(delta: float) -> void:
 	pass
 

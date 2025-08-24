@@ -1,3 +1,7 @@
-[gd_scene format=3 uid="uid://h4vfmmy2ofj3"]
+[gd_scene load_steps=2 format=3 uid="uid://h4vfmmy2ofj3"]
+
+[ext_resource type="PackedScene" uid="uid://bo2c845ycjlc6" path="res://src/game_root.tscn" id="1_ujija"]
 
 [node name="CuteSpaceInvadersAssailedByBelligerentMan" type="Node"]
+
+[node name="GameRoot" parent="." instance=ExtResource("1_ujija")]
