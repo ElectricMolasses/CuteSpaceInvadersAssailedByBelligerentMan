@@ -58,5 +58,5 @@ func _area_entered(body: Node):
 	if body is BelligerentMan:
 		if self.direction == Direction.UP:
 			return
-		body.queue_free()
+		body.kill()
 		queue_free()

@@ -82,3 +82,5 @@ func move_left() -> void:
 func fire() -> void:
 	projectile_spawner.spawn_enemy_projectile(self.position)
 
+func kill() -> void:
+	queue_free()

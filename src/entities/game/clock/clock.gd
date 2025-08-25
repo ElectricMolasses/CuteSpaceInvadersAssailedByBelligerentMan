@@ -11,7 +11,8 @@ func _physics_process(delta: float) -> void:
 	if current_frame_time >= frame_length:
 		current_frame_time -= frame_length
 		for subscriber in subscribers:
-			subscriber.tick()
+			if subscriber:
+				subscriber.tick()
 
 func subscribe(ref: Variant) -> void:
 	subscribers.push_back(ref)

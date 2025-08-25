@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://xc510j817jtx" path="res://src/entities/projectiles/projectile_a/projectile_a.tscn" id="4_u4x4t"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_u4x4t"]
-points = PackedVector2Array(-14, 0, 0, -33, 13, 0)
+points = PackedVector2Array(-34, 34, 0, -33, 34, 34)
 
 [node name="Enemy" type="Area2D"]
 script = ExtResource("1_wbyf0")
