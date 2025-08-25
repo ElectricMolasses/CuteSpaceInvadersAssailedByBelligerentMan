@@ -1,25 +1,76 @@
-[gd_scene load_steps=6 format=3 uid="uid://ed21rpoloa1k"]
+[gd_scene load_steps=14 format=3 uid="uid://ed21rpoloa1k"]
 
 [ext_resource type="Script" uid="uid://r232l55mo8v4" path="res://src/entities/invaders/invader/invader.gd" id="1_qk5c4"]
+[ext_resource type="Texture2D" uid="uid://ygcage3gix86" path="res://assets/sprites/invaders/00.png" id="2_0qomf"]
+[ext_resource type="Texture2D" uid="uid://t38pgg6v62hs" path="res://assets/sprites/invaders/death/01.png" id="2_nuu0a"]
 [ext_resource type="PackedScene" uid="uid://bpnw1lobw4hy3" path="res://src/entities/projectiles/spawner/projectile_spawner.tscn" id="2_qlxgp"]
-[ext_resource type="PackedScene" uid="uid://xc510j817jtx" path="res://src/entities/projectiles/projectile_a/projectile_a.tscn" id="3_att1v"]
+[ext_resource type="Texture2D" uid="uid://b52ge6wa8iyng" path="res://assets/sprites/invaders/01.png" id="3_5v4fd"]
+[ext_resource type="PackedScene" uid="uid://dk2tuh15javie" path="res://src/entities/projectiles/projectile_b/projectile_b.tscn" id="3_att1v"]
+[ext_resource type="Texture2D" uid="uid://bpi1owjnyc20p" path="res://assets/sprites/invaders/death/02.png" id="3_f38py"]
+[ext_resource type="Texture2D" uid="uid://byj5ua7grfkr3" path="res://assets/sprites/invaders/02.png" id="4_ru3xb"]
+[ext_resource type="Texture2D" uid="uid://bgfev4dhpie8k" path="res://assets/sprites/invaders/death/03.png" id="4_sbkfa"]
+[ext_resource type="Texture2D" uid="uid://5cygdkc08l8b" path="res://assets/sprites/invaders/death/04.png" id="5_cx8gj"]
+[ext_resource type="Texture2D" uid="uid://d2pbm6j37r0mb" path="res://assets/sprites/invaders/death/05.png" id="6_8bwhp"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_2qjh8"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_amkqg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nuu0a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f38py")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sbkfa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cx8gj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8bwhp")
+}],
+"loop": false,
+"name": &"death_oopsie",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0qomf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5v4fd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ru3xb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5v4fd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qk5c4"]
+size = Vector2(13, 14.6667)
 
 [node name="Invader" type="Node2D"]
 script = ExtResource("1_qk5c4")
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(30, 30)
-scale = Vector2(60, 60)
-texture = SubResource("CanvasTexture_2qjh8")
+scale = Vector2(1.165, 1.165)
+sprite_frames = SubResource("SpriteFrames_amkqg")
+animation = &"death_oopsie"
+frame = 1
+frame_progress = 0.404148
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(30, 30)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.5, -6)
 scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_qk5c4")
 

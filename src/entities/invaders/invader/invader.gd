@@ -33,8 +33,16 @@ enum Position {
 var current_direction: Direction = start_direction
 var current_frame_time: float = 0.0
 
-var sprite: Sprite2D = null
-var visual_width: float = 0.0
+var sprite: AnimatedSprite2D = null
+var visual_width: float = 50
+
+var collider: Area2D
+
+var projectile_spawner: ProjectileSpawner
+
+var is_dying: bool = false
+var death_clock_limit: float = 0.6
+var death_clock: float = 0.0
 
 ## A rectangle used to visually define the bounding box for the
 ##  invaders vertical movement.
@@ -47,8 +55,11 @@ func _ready() -> void:
 	strafe_right_x = self.position.x + strafe_box.size.x
 
 	self.sprite = $Sprite
-	self.visual_width = self.sprite.texture.get_size().x
-	self.visual_width *= self.sprite.scale.x
+	self.sprite.play("default")
+
+	self.collider = $Area2D
+
+	self.projectile_spawner = $ProjectileSpawner
 
 	# Place the invader in the correct location of its box. Assume
 	#  that the editor placement of the invader represents the left
@@ -60,8 +71,13 @@ func _ready() -> void:
 		Position.RIGHT:
 			position.x += strafe_box.size.x - self.visual_width
 
-func _physics_process(delta: float) -> void:
-	pass
+func _process(delta: float) -> void:
+	if !is_dying:
+		return
+
+	death_clock += delta
+	if death_clock >= death_clock_limit + 0.2:
+		queue_free()
 
 func tick() -> void:
 	self.handle_movement()
@@ -70,7 +86,7 @@ func handle_movement() -> void:
 	var move_vector = Vector2(strafe_speed, 0)
 	if current_direction == Direction.LEFT:
 		move_vector = -move_vector
-	
+
 	var new_position = self.position + move_vector
 
 	if new_position.x > strafe_right_x - self.visual_width:
@@ -81,3 +97,12 @@ func handle_movement() -> void:
 		self.current_direction = Direction.RIGHT
 	else:
 		self.position = new_position
+
+func fire() -> void:
+	projectile_spawner.spawn_invader_projectile(self.position + get_parent().position)
+
+func kill() -> void:
+	AudioManager.play_clip(AudioManager.Clip.JELLY_DEATH)
+	self.sprite.play("death_oopsie")
+	self.is_dying = true
+	self.collider.queue_free()

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://y5218lan7bi1" path="res://src/entities/invaders/invaders_manager/invaders_manager.tscn" id="1_65u1q"]
 [ext_resource type="PackedScene" uid="uid://c0a286k6e0j88" path="res://src/entities/belligerent_man/enemy.tscn" id="2_g3w2m"]
-[ext_resource type="PackedScene" uid="uid://ed21rpoloa1k" path="res://src/entities/invaders/invader/invader.tscn" id="2_qklge"]
+[ext_resource type="PackedScene" uid="uid://cy6hdyaq47fhj" path="res://src/entities/invaders/invaders_controller/invader_controller.tscn" id="2_qklge"]
 [ext_resource type="PackedScene" uid="uid://k6ci0gxep84e" path="res://src/ai/enemy/enemy_controller.tscn" id="3_qklge"]
 
 [node name="GameRoot" type="Node2D"]
@@ -11,10 +11,13 @@
 position = Vector2(70, 85)
 columns = 3
 rows = 6
-invader_scene = ExtResource("2_qklge")
+
+[node name="InvaderController" parent="InvadersManager" node_paths=PackedStringArray("invaders_manager") instance=ExtResource("2_qklge")]
+invaders_manager = NodePath("..")
 
 [node name="Enemy" parent="." instance=ExtResource("2_g3w2m")]
-position = Vector2(316, 1102)
+position = Vector2(320, 1102)
 
-[node name="EnemyController" parent="." node_paths=PackedStringArray("puppet") instance=ExtResource("3_qklge")]
-puppet = NodePath("../Enemy")
+[node name="EnemyController" parent="Enemy" node_paths=PackedStringArray("puppet") instance=ExtResource("3_qklge")]
+position = Vector2(-316, -1102)
+puppet = NodePath("..")

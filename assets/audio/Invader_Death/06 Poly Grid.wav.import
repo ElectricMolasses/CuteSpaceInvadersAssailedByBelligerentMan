@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ckwj8vxaoo3tb"
+path="res://.godot/imported/06 Poly Grid.wav-40185560b9c9ba41d43eb68cb465f8f4.sample"
+
+[deps]
+
+source_file="res://assets/audio/Invader_Death/06 Poly Grid.wav"
+dest_files=["res://.godot/imported/06 Poly Grid.wav-40185560b9c9ba41d43eb68cb465f8f4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

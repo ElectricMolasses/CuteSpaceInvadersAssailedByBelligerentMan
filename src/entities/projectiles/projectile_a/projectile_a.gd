@@ -19,6 +19,8 @@ func _ready() -> void:
 	
 	set_size(30, 30)
 
+	connect("area_entered", _area_entered)
+
 	match direction:
 		Direction.UP:
 			self.velocity = self.velocity * -1
@@ -31,3 +33,17 @@ func set_size(thickness_px: float, length_px: float) -> void:
 
 func tick() -> void:
 	self.position += self.velocity
+
+func _area_entered(body: Node):
+	if body is Projectile:
+		queue_free()
+	if body.get_parent() is Invader:
+		if self.direction == Direction.DOWN:
+			return
+		body.get_parent().kill()
+		queue_free()
+	if body is BelligerentMan:
+		if self.direction == Direction.UP:
+			return
+		body.queue_free()
+		queue_free()
