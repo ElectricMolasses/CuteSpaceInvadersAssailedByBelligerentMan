@@ -27,6 +27,8 @@ func _ready() -> void:
 		Direction.DOWN:
 			pass
 
+## Sets the width and length of a projectile. Finnicky, this shader's
+##  a mess.
 func set_size(thickness_px: float, length_px: float) -> void:
 	var sprite: Sprite2D = $Sprite
 	sprite.scale = Vector2(thickness_px, length_px)
@@ -34,10 +36,21 @@ func set_size(thickness_px: float, length_px: float) -> void:
 func tick() -> void:
 	self.position += self.velocity
 
+## The projectiles are the authority on what happens in the event of
+##  a collision. This is not ideal, but these are the compromises we 
+##  make for game jams :D
 func _area_entered(body: Node):
 	if body is Projectile:
 		queue_free()
 	if body.get_parent() is Invader:
+		# This grossness is basically built on knowing that projectiles
+		#  will only be fired in single, opposing directions, based
+		#  on the `team`. So if the projectile is going DOWN, we
+		#  implicitly understand that we should not be calling
+		#  kill on any `Invader`s it collides with.
+		# This is straight up bad practice. Write a collision manager,
+		#  or handle the logic of each entities collision with other 
+		#  entities internally.
 		if self.direction == Direction.DOWN:
 			return
 		body.get_parent().kill()

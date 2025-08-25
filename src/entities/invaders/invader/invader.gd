@@ -101,6 +101,7 @@ func handle_movement() -> void:
 func fire() -> void:
 	projectile_spawner.spawn_invader_projectile(self.position + get_parent().position)
 
+## Handle the death of an invader
 func kill() -> void:
 	AudioManager.play_clip(AudioManager.Clip.JELLY_DEATH)
 	self.sprite.play("death_oopsie")

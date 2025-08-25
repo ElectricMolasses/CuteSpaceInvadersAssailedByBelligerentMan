@@ -11,6 +11,12 @@ enum Action {
 ## The size of the player.
 @export var size: int = 64
 
+## The number of "steps" the `BelligerentMan` is allowed to take
+##  in either direction.
+@export var allowed_steps: int = 3
+
+var current_step: int = 0
+
 ## The size the player is coded for, before scaling to match
 ##  the editor defined size
 var base_player_size = 64
@@ -42,10 +48,28 @@ func tick() -> void:
 func move(action: Action) -> void:
 	match action:
 		Action.MOVE_LEFT:
-			self.position.x -= 60
+			if current_step <= -allowed_steps:
+				self.move_right()
+				return
+			self.move_left()
 		Action.MOVE_RIGHT:
-			self.position.x += 60
+			if current_step >= allowed_steps:
+				self.move_left()
+				return
+			self.move_right()
 
+func move_right() -> void:
+	self.position.x += 60
+	self.current_step += 1
+
+func move_left() -> void:
+	self.position.x -= 60
+	self.current_step -= 1
+
+## Call into the attached `ProjectileSpawner` to create a projectile.
+##  This allows us to decouple firing logic from the `BelligerentMan`,
+##  as well as easily and visually move the location projectiles
+##  will spawn at, relative to the `BelligerentMan`.
 func fire() -> void:
 	projectile_spawner.spawn_enemy_projectile(self.position)
 

@@ -1,4 +1,3 @@
-@tool
 class_name InvaderSelector
 extends Node2D
 

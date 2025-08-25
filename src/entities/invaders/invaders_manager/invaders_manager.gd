@@ -40,17 +40,25 @@ var fire_next_frame: int = -1
 
 func _ready() -> void:
 	self.create_invaders()
+	self.configure_selector()
+	Clock.subscribe(self)
+
+func _process(_delta: float) -> void:
+	self.selector_handler.selected_column = self.selected_column
+
+## Configures the selector that indicates to the player which column
+##  of invaders is currently chosen to fire.
+func configure_selector() -> void:
 	self.selector_handler = $InvaderSelector
 	self.selector_handler.start = self.position
 	self.selector_handler.show_rect = true
 	self.selector_handler.row_width = invader_width
 	self.selector_handler.row_idx_offset = invader_width + column_gap
 	self.selector_handler.strafe_speed = 50
-	Clock.subscribe(self)
 
-func _process(_delta: float) -> void:
-	self.selector_handler.selected_column = self.selected_column
 
+## Generate a grid of invaders that are `self.columns` wide and
+##  `self.rows` tall.
 func create_invaders() -> void:
 	var current_position: Vector2 = self.position
 	for i in range(0, rows):

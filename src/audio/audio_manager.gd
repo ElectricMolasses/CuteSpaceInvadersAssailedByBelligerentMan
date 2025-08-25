@@ -4,6 +4,9 @@ enum Clip {
 	JELLY_DEATH,
 }
 
+## Let each key in audio_sources hold an array, such that we
+##  can easily choose random sounds for each event that
+##  plays that source.
 var audio_sources: Dictionary[Clip, Array] = {
 	Clip.JELLY_DEATH: [
 		"res://assets/audio/Invader_Death/01 Poly Grid.wav",
@@ -23,6 +26,7 @@ var audio_clips: Dictionary[Clip, Array] = {}
 var audio_streams: Array[AudioStreamPlayer] = []
 
 func _ready() -> void:
+	# Load each audio source path into an AudioStream
 	for key in audio_sources.keys():
 		audio_clips[key] = []
 		for source in audio_sources[key]:
@@ -31,6 +35,7 @@ func _ready() -> void:
 			)
 
 func _process(_delta: float) -> void:
+	# Find any completed AudioPlayer's and cull them
 	var streams_to_cull: Array[int]
 
 	for i in len(audio_streams):
@@ -41,6 +46,10 @@ func _process(_delta: float) -> void:
 		audio_streams[idx].queue_free()
 		audio_streams.remove_at(idx)
 
+## Creates an independent `AudioStreamPlayer` for the
+##  sound and manages its lifetime. Allows us to easily
+##  play multiple sounds from an arbitrary number of
+##  events.
 func play_clip(clip: Clip):
 	match clip:
 		Clip.JELLY_DEATH:
