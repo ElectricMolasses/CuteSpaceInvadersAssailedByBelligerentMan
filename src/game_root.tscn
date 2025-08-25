@@ -16,7 +16,7 @@ rows = 6
 invaders_manager = NodePath("..")
 
 [node name="Enemy" parent="." instance=ExtResource("2_g3w2m")]
-position = Vector2(320, 1102)
+position = Vector2(290, 1102)
 
 [node name="EnemyController" parent="Enemy" node_paths=PackedStringArray("puppet") instance=ExtResource("3_qklge")]
 position = Vector2(-316, -1102)

@@ -45,6 +45,15 @@ func tick() -> void:
 		Action.FIRE:
 			fire()
 
+## Accepts an action (Assumed to be one of the two
+##  move actions, godot doesn't support enum
+##  inheritance), and moves in the direction if
+##  not at the step boundary, while moving in the
+##  opposite direction if it is at the step boundary.
+##  This both prevents the `BelligerentMan` from
+##  leaving the confines of the game, as well as
+##  preventing the odds of movement vs IDLE or
+##  FIRE from changing at the boundary.
 func move(action: Action) -> void:
 	match action:
 		Action.MOVE_LEFT:
@@ -59,11 +68,11 @@ func move(action: Action) -> void:
 			self.move_right()
 
 func move_right() -> void:
-	self.position.x += 60
+	self.position.x += 50
 	self.current_step += 1
 
 func move_left() -> void:
-	self.position.x -= 60
+	self.position.x -= 50
 	self.current_step -= 1
 
 ## Call into the attached `ProjectileSpawner` to create a projectile.
